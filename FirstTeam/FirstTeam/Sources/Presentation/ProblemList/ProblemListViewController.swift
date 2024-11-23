@@ -8,10 +8,10 @@
 import UIKit
 
 final class ProblemListViewController: BaseViewController {
-    
+    private let apiService = APIService()
     private let rootView = ProblemListView()
     
-    private var problemList = ProblemModel.mockProblemList
+    private var problemList: [ProblemModel] = []
     
     override func loadView() {
         view = rootView
@@ -23,6 +23,7 @@ final class ProblemListViewController: BaseViewController {
         setupNavigationBarTitle(with: "해결된 고민 리스트")
         register()
         setupDelegate()
+        fetchData()
     }
     
     private func register() {
@@ -35,6 +36,19 @@ final class ProblemListViewController: BaseViewController {
     private func setupDelegate() {
         rootView.tableView.delegate = self
         rootView.tableView.dataSource = self
+    }
+    
+    private func fetchData() {
+        apiService.fetchSolvedProblemList { [weak self] response in
+            guard let self else { return }
+            switch response {
+            case .success(let models):
+                self.problemList = models
+                rootView.tableView.reloadData()
+            case .failure(let error):
+                dump(error)
+            }
+        }
     }
 }
 
