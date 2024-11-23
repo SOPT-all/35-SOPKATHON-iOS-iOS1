@@ -35,7 +35,9 @@ final class HomeViewController: BaseViewController {
         $0.textColor = FirstTeamAsset.gray10.color
     }
     
-    private let problemImageView = UIImageView()
+    private let problemImageView = UIImageView().then {
+        $0.clipsToBounds = true
+    }
     
     private lazy var alreadySolveProblemButton = UIButton().then {
         $0.setTitle(
@@ -87,8 +89,8 @@ final class HomeViewController: BaseViewController {
     
     // TODO: API 호출로 변경
     private func fetchModel() {
-        model = HomeModel.noProblemMockData
-//        model = HomeModel.problemExistMockData
+//        model = HomeModel.noProblemMockData
+        model = HomeModel.problemExistMockData
         guard let model else { return }
         if model.isProblemExist {
             nicknameLabel.isHidden = true
@@ -105,6 +107,7 @@ final class HomeViewController: BaseViewController {
             subAnnounceLabel.text = "같이 고민해주겠삼!"
             createProblemButton.isEnabled = true
             alreadySolveProblemButton.isHidden = true
+            problemImageView.image = FirstTeamAsset._0step.image
         }
     }
     
@@ -156,10 +159,10 @@ final class HomeViewController: BaseViewController {
             $0.leading.equalTo(nicknameLabel)
         }
         
-        // TODO: 피그마에 따라 수정
         problemImageView.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.size.equalTo(60)
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalTo(view.snp.bottom).offset(-90)
+            $0.height.equalTo(450)
         }
         
         bottomContainerView.snp.makeConstraints {
@@ -204,8 +207,16 @@ final class HomeViewController: BaseViewController {
         let minute = seconds/60
         if day > 0 {
             resultString += "\(day)일 "
-        } else if hour > 0 {
+        }
+        if hour > 0 {
             resultString += "\(hour)시간 "
+        }
+        if day >= 2 {
+            problemImageView.image = FirstTeamAsset._3step.image
+        } else if day >= 1 {
+            problemImageView.image = FirstTeamAsset._2step.image
+        } else {
+            problemImageView.image = FirstTeamAsset._1step.image
         }
         resultString += "\(minute)분 째 고민 중..."
         
