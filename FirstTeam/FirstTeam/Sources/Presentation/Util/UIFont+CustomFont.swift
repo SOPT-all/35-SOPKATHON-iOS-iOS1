@@ -113,26 +113,25 @@ enum Pretendard {
         }
     }
     
-    var name: String {
-        let familyName = "Pretendard"
-        let weight = switch self {
+    var name: FirstTeamFontConvertible {
+        switch self {
         case .title01, .subtitle01:
-            "Bold"
+            FirstTeam.FirstTeamFontFamily.Pretendard.bold
         case .title02, .title03, .body01, .body04:
-            "SemiBold"
+            FirstTeam.FirstTeamFontFamily.Pretendard.semiBold
         case .subtitle02, .body03, .body06, .caption02:
-            "Regular"
+            FirstTeam.FirstTeamFontFamily.Pretendard.regular
         case .body02, .body05, .caption01:
-            "Medium"
+            FirstTeam.FirstTeamFontFamily.Pretendard.medium
         }
-        return "\(familyName)-\(weight)"
     }
+    
 }
 
 extension UIFont {
     /// pretendard 글꼴 제공 함수
     /// info.plist와 글꼴 파일 오류를 탐지하기 위해 강제 언래핑 사용
     static func pretendard(_ font: Pretendard) -> UIFont {
-        UIFont(name: font.name, size: font.size)!
+        font.name.font(size: font.size)
     }
 }
