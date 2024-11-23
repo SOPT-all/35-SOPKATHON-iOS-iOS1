@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class CheckProblemView: BaseView {
+final class CheckProblemView: BaseView {
     // MARK: - UI Components
     
     private let checkTitleLabel = UILabel().then {
@@ -93,7 +93,6 @@ class CheckProblemView: BaseView {
     }
     
     // MARK: - Initializer
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setStyle()
@@ -106,8 +105,6 @@ class CheckProblemView: BaseView {
     }
     
     // MARK: - Style, UI, Layout
-    override func setStyle(){
-    }
     
     override func setUI() {
         worryItem1Container.addSubview(worryItem1Label)
@@ -183,6 +180,4 @@ class CheckProblemView: BaseView {
             $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).inset(15)
         }
     }
-    
-    
 }

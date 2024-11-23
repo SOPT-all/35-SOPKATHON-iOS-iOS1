@@ -17,7 +17,6 @@ class CheckProblemViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     // MARK: - View Lifecycle
@@ -34,6 +33,5 @@ class CheckProblemViewController: BaseViewController {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
-        
     }
 }

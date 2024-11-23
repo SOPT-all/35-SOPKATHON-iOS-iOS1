@@ -10,7 +10,7 @@ import UIKit
 import Then
 import SnapKit
 
-class CompleteProblemView: BaseView {
+final class CompleteProblemView: BaseView {
     // MARK: - UI Components
     private let logoIconImageView = UIImageView().then {
         $0.image = UIImage(systemName: "person")
@@ -43,7 +43,6 @@ class CompleteProblemView: BaseView {
         $0.layer.cornerRadius = 12
     }
     
-    
     // MARK: - Initializer
     
     override init(frame: CGRect) {
@@ -57,11 +56,7 @@ class CompleteProblemView: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Style, UI, Layout
-    override func setStyle(){
-        
-    }
-    
+    // MARK: - UI, Layout
     override func setUI() {
         self.addSubviews(
             logoIconImageView,
@@ -82,11 +77,10 @@ class CompleteProblemView: BaseView {
             $0.centerX.equalToSuperview()
         }
         
-        hardWorryButton.snp.makeConstraints{                        $0.horizontalEdges.equalToSuperview().inset(20)
+        hardWorryButton.snp.makeConstraints{
+            $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(54)
             $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).inset(15)
         }
     }
-    
-    
 }
