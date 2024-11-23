@@ -14,6 +14,12 @@ final class CompleteProblemViewController: BaseViewController {
     // MARK: - UI Components
     private let completeProblemView = CompleteProblemView()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setTarget()
+    }
+    
     // MARK: - View Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,6 +31,16 @@ final class CompleteProblemViewController: BaseViewController {
         super.viewWillDisappear(animated)
         
         navigationController?.isNavigationBarHidden = false
+    }
+    
+    private func setTarget() {
+        completeProblemView.hardWorryButton.addTarget(self, action: #selector(hardWorryButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc
+    private func hardWorryButtonDidTap() {
+        let homeViewController = HomeViewController()
+        self.navigationController?.pushViewController(homeViewController, animated: true)
     }
     
     override func setStyle() {

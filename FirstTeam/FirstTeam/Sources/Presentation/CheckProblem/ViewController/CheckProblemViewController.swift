@@ -12,6 +12,7 @@ import SnapKit
 
 final class CheckProblemViewController: BaseViewController {
     
+    // TODO: API 연결해야 하는 프로퍼티
     var firstText: String?
     var secondText: String?
     var problemTitle: String?

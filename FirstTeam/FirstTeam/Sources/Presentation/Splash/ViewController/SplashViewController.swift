@@ -59,10 +59,7 @@ final class SplashViewController: BaseViewController {
             } else {
                 nextViewController = HomeViewController()
             }
-
-        let navigationController = UINavigationController(rootViewController: nextViewController)
         
-        navigationController.modalPresentationStyle = .fullScreen
-        self.present(navigationController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 }

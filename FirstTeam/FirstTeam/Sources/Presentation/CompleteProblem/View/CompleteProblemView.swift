@@ -18,20 +18,10 @@ final class CompleteProblemView: BaseView {
     }
     
     private let completeInfoLabel = UILabel().then{
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 4
-        
-        let attributedText = NSMutableAttributedString(
-            string: "3일만 더 고민해 보삼.\n  우리도 함께 고민해 보겠삼!",
-            attributes: [
-                .font: UIFont.pretendard(.title02),
-                .foregroundColor: UIColor(resource: .black0),
-                .paragraphStyle: paragraphStyle,
-            ]
-        )
-        
+        $0.text = "3일만 더 고민해 보삼.\n우리도 함께 고민해 보겠삼!"
+        $0.font = .pretendard(.title02)
+        $0.textColor = UIColor(resource: .black0)
         $0.textAlignment = .center
-        $0.attributedText = attributedText
         $0.numberOfLines = 2
     }
     
