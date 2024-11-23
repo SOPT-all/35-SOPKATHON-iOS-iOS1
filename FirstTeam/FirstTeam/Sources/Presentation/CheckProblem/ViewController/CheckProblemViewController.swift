@@ -10,26 +10,26 @@ import UIKit
 import Then
 import SnapKit
 
-class CheckProblemViewController: BaseViewController {
+final class CheckProblemViewController: BaseViewController {
     // MARK: - UI Components
     private let checkProblemView = CheckProblemView()
-    private let completeProblemView = CompleteProblemView()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     // MARK: - View Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupNavigationBarTitle(with: "고민 확인하기")
+    }
     override func setStyle() {
         view.backgroundColor = .white
     }
     
     override func setUI() {
-        view.addSubviews(completeProblemView)
+        view.addSubview(checkProblemView)
     }
 
     override func setLayout() {
-        completeProblemView.snp.makeConstraints {
+        checkProblemView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.horizontalEdges.bottom.equalToSuperview()
         }

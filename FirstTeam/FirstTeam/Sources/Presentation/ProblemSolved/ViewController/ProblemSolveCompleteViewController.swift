@@ -1,8 +1,8 @@
 //
-//  ProblemSolveViewController.swift
+//  ProblemSolveCompleteViewController.swift
 //  FirstTeam
 //
-//  Created by 김예지 on 11/24/24.
+//  Created by 예삐 on 11/24/24.
 //
 
 import UIKit
@@ -10,8 +10,8 @@ import UIKit
 import SnapKit
 import Then
 
-final class ProblemSolveViewController: BaseViewController {
-    private let problemSolveView = ProblemSolveView(isAfterThreeDays: false)
+final class ProblemSolveCompleteViewController: BaseViewController {
+    private let problemSolveCompleteView = ProblemSolveCompleteView()
     
     // MARK: - View Lifecycle
     override func setStyle() {
@@ -19,11 +19,11 @@ final class ProblemSolveViewController: BaseViewController {
     }
     
     override func setUI() {
-        view.addSubviews(problemSolveView)
+        view.addSubviews(problemSolveCompleteView)
     }
 
     override func setLayout() {
-        problemSolveView.snp.makeConstraints {
+        problemSolveCompleteView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.horizontalEdges.bottom.equalToSuperview()
         }

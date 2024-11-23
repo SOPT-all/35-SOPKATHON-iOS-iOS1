@@ -13,7 +13,7 @@ import SnapKit
 final class CompleteProblemView: BaseView {
     // MARK: - UI Components
     private let logoIconImageView = UIImageView().then {
-        $0.image = UIImage(systemName: "person")
+        $0.image = UIImage(resource: .babomandu)
         $0.contentMode = .scaleAspectFill
     }
     
