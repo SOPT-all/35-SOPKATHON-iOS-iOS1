@@ -11,7 +11,7 @@ import Then
 
 final class SelectionWriteView: BaseView {
     private let titleLabel = UILabel().then {
-        $0.text = "어떤 것 중에 고민이세요?"
+        $0.text = "어떤 것 중에 고민이삼?"
         $0.font = .pretendard(.title01)
         $0.textColor = UIColor(resource: .black0)
     }
