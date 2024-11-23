@@ -24,12 +24,17 @@ final class ProblemWriteViewController: BaseViewController {
         rootView.titleTextField.delegate = self
         
         setupNavigationBarTitle(with: "고민 작성하기")
+        setTarget()
         setGesture()
         addKeyboardObservers()
     }
     
     deinit {
         removeKeyboardObservers()
+    }
+    
+    private func setTarget() {
+        rootView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
         
     private func setGesture() {
@@ -58,6 +63,13 @@ final class ProblemWriteViewController: BaseViewController {
     private func removeKeyboardObservers() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc
+    private func nextButtonDidTap() {
+        let selectionWriteViewController = SelectionWriteViewController()
+        selectionWriteViewController.problemTitle = rootView.titleTextField.text
+        self.navigationController?.pushViewController(selectionWriteViewController, animated: true)
     }
     
     @objc

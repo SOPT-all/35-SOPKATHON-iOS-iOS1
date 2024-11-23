@@ -13,6 +13,8 @@ final class SelectionWriteViewController: BaseViewController {
     
     private var isValid: Bool = false
     
+    var problemTitle: String?
+    
     override func loadView() {
         view = rootView
     }
@@ -34,6 +36,7 @@ final class SelectionWriteViewController: BaseViewController {
     private func setTarget() {
         rootView.firstTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         rootView.secondTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        rootView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
     
     private func setupDelegate() {
@@ -85,6 +88,15 @@ final class SelectionWriteViewController: BaseViewController {
     private func removeKeyboardObservers() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc
+    private func nextButtonDidTap() {
+        let checkProblemViewController = CheckProblemViewController()
+        checkProblemViewController.firstText = rootView.firstTextField.text
+        checkProblemViewController.secondText = rootView.secondTextField.text
+        checkProblemViewController.problemTitle = problemTitle
+        self.navigationController?.pushViewController(checkProblemViewController, animated: true)
     }
     
     @objc

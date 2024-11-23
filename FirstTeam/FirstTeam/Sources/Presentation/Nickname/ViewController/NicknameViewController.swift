@@ -23,6 +23,18 @@ final class NicknameViewController: BaseViewController {
         setAction()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.isNavigationBarHidden = false
+    }
+    
     override func setStyle() {
         view.backgroundColor = .white
     }
@@ -49,7 +61,8 @@ final class NicknameViewController: BaseViewController {
         let nickname = nicknameView.nicknameTextField.text ?? ""
         UserDefaults.standard.set(nickname, forKey: "nickname")
         
-        // TODO: push next view controller
+        let problemWriteViewController = ProblemWriteViewController()
+        self.navigationController?.pushViewController(problemWriteViewController, animated: true)
     }
     
     private func setObserver() {

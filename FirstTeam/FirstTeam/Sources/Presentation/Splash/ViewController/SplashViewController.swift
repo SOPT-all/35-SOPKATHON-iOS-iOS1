@@ -23,7 +23,7 @@ final class SplashViewController: BaseViewController {
         super.viewDidLoad()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            self.navigateToNicknameViewController()
+            self.navigateToNextViewController()
         }
     }
     
@@ -49,7 +49,7 @@ final class SplashViewController: BaseViewController {
         }
     }
 
-    private func navigateToNicknameViewController() {
+    private func navigateToNextViewController() {
         
         var nextViewController = UIViewController()
         
@@ -59,10 +59,7 @@ final class SplashViewController: BaseViewController {
             } else {
                 nextViewController = HomeViewController()
             }
-
-        let navigationController = UINavigationController(rootViewController: nextViewController)
         
-        navigationController.modalPresentationStyle = .fullScreen
-        self.present(navigationController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 }

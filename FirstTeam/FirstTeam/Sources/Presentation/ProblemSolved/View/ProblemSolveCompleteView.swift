@@ -78,7 +78,7 @@ class ProblemSolveCompleteView: BaseView {
         $0.numberOfLines = 0
     }
     
-    private let goProblemListButton = UIButton().then {
+    let goProblemListButton = UIButton().then {
         $0.setTitle("홈으로 가기", for: .normal)
         $0.titleLabel?.font = .pretendard(.subtitle01)
         $0.backgroundColor = UIColor(resource: .green0)
