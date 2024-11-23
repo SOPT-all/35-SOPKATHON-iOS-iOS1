@@ -7,7 +7,7 @@
 |🔖 조성민</br>[@SungMinCho-Kor](https://github.com/SungMinCho-Kor)|🔖 김수연</br>[@mmaybei](https://github.com/mmaybei)|🔖 김송희</br>[@hongseekim](https://github.com/hongseekim)|🔖 김예지</br>[@mnbvcxzyj](https://github.com/mnbvcxzyj)|
 |:---:|:---:|:---:|:---:|
 |<img src = "https://github.com/SungMinCho-Kor.png" width ="250">|<img src = "https://github.com/mmaybei.png" width ="250">|<img src = "https://github.com/hongseekim.png" width ="250">|<img src = "https://github.com/mnbvcxzyj.png" width ="250">|
-|`프로젝트 세팅` `네트워크`|`맡은 뷰`|`맡은 뷰`|`맡은 뷰`|
+|`프로젝트 세팅` `홈` `고민 해결 리스트`|`고민 입력 뷰`|`닉네임 입력 뷰`|`고민 접수 뷰`|
 </br>
 
 # 🌀 Library
