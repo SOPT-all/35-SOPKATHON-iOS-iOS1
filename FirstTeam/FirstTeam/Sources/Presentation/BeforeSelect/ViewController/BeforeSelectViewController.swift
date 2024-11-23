@@ -43,18 +43,19 @@ final class BeforeSelectViewController: BaseViewController {
         )
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        fetchModel()
-    }
-    
-    init(problemID: Int) {
+    init(problemID: Int, firstChoice: String, secondChoice: String) {
         self.problemID = problemID
         super.init(nibName: nil, bundle: nil)
+        firstChoiceButton.setTitle(firstChoice, for: .normal)
+        secondChoiceButton.setTitle(secondChoice, for: .normal)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
     
     override func setStyle() {
@@ -86,18 +87,6 @@ final class BeforeSelectViewController: BaseViewController {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(54)
         }
-    }
-    
-    private func fetchModel() {
-        let data = BeforeSelectModel.mockData
-        firstChoiceButton.setTitle(
-            data.firstChoice,
-            for: .normal
-        )
-        secondChoiceButton.setTitle(
-            data.secondChoice,
-            for: .normal
-        )
     }
     
     @objc private func firstChoiceButtonTapped() {
@@ -132,6 +121,6 @@ final class BeforeSelectViewController: BaseViewController {
                     dump(failure)
                 }
             }
-        
     }
+    
 }

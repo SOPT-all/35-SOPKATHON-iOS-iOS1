@@ -52,7 +52,11 @@ final class CheckProblemViewController: BaseViewController {
     
     @objc
     private func applyButtonDidTap() {
-        let completeProblemViewController = CompleteProblemViewController()
+        let completeProblemViewController = CompleteProblemViewController(
+            firstText: firstText ?? "",
+            secondText: secondText ?? "",
+            problemTitle: problemTitle ?? ""
+        )
         self.navigationController?.pushViewController(completeProblemViewController, animated: true)
     }
 }

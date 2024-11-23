@@ -34,6 +34,7 @@ final class APIService {
             case .success(let responseDTO):
                 let formatter = DateFormatter()
                 formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                dump(responseDTO)
                 if let problem = responseDTO.problem,
                    let date = formatter.date(from: problem.startDate) {
                     completion(
@@ -43,7 +44,9 @@ final class APIService {
                                 problem: Problem(
                                     id: problem.id,
                                     problem: problem.title,
-                                    startDate: date
+                                    startDate: date,
+                                    firstChoice: problem.items[0].content,
+                                    secondChoice: problem.items[1].content
                                 )
                             )
                         )
@@ -72,6 +75,7 @@ final class APIService {
             }
             switch response.result {
             case .success(let responseDTO):
+                dump(responseDTO)
                 completion(
                     .success(
                         responseDTO.problems.map(

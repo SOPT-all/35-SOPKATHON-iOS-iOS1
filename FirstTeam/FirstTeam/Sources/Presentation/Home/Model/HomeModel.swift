@@ -16,4 +16,6 @@ struct Problem {
     let id: Int
     let problem: String
     let startDate: Date
+    let firstChoice: String
+    let secondChoice: String
 }

@@ -13,7 +13,9 @@ import Then
 final class HomeViewController: BaseViewController {
     
     private let apiService = APIService()
-    private var model: HomeModel?
+    private var id: Int?
+    private var firstChoice: String?
+    private var secondChoice: String?
     
     private let nicknameLabel = UILabel().then {
         $0.font = .pretendard(.title01)
@@ -108,6 +110,9 @@ final class HomeViewController: BaseViewController {
             case .success(let model):
                 if model.isProblemExist,
                    let problem = model.problem {
+                    self.firstChoice = problem.firstChoice
+                    self.secondChoice = problem.secondChoice
+                    self.id = problem.id
                     nicknameLabel.isHidden = true
                     problemTitleLabel.text = problem.problem
                     announceLabel.text = "함께 고민하고 있삼!"
@@ -217,7 +222,11 @@ final class HomeViewController: BaseViewController {
     }
     
     @objc private func alreadySolveProblemButtonTapped() {
-        let problemSolveViewController = ProblemSolveViewController()
+        let problemSolveViewController = ProblemSolveViewController(
+            id: id!,
+            firstChoice: firstChoice ?? "",
+            secondChoice: secondChoice ?? ""
+        )
         self.navigationController?.pushViewController(problemSolveViewController, animated: true)
     }
     
