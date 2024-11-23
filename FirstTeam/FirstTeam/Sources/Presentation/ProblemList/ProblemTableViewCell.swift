@@ -139,7 +139,9 @@ final class ProblemTableViewCell: UITableViewCell {
 extension ProblemTableViewCell {
     func dataBind(_ data: ProblemModel) {
         dateStartLabel.text = data.startDate
-        dateEndLabel.text = "- \(data.endDate)"
+        if let endDate = data.endDate {
+            dateEndLabel.text = "- \(endDate)"
+        }
         problemTitleLabel.text = data.title
         worryItem1Label.text = data.items[0].content
         worryItem1Label.textColor = UIColor(resource:data.items[0].isSelected ? .gray01 : .gray09)

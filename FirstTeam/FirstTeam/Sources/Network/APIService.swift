@@ -33,8 +33,7 @@ final class APIService {
             switch response.result {
             case .success(let responseDTO):
                 let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                dump(responseDTO)
+                formatter.dateFormat = "yyyy-MM-ddHH:mm:ss"
                 if let problem = responseDTO.problem,
                    let date = formatter.date(from: problem.startDate) {
                     completion(

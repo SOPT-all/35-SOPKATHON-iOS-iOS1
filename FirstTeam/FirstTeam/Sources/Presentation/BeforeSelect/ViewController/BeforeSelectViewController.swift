@@ -10,6 +10,9 @@ import UIKit
 final class BeforeSelectViewController: BaseViewController {
     private let apiService = APIService()
     private let problemID: Int
+    private let problemtitle: String
+    private let firstChoice: String
+    private let secondChoice: String
     private let announceLabel = UILabel().then {
         $0.text = "뭘 선택했삼?"
         $0.font = .pretendard(.title01)
@@ -43,8 +46,11 @@ final class BeforeSelectViewController: BaseViewController {
         )
     }
     
-    init(problemID: Int, firstChoice: String, secondChoice: String) {
+    init(problemID: Int, problemtitle: String, firstChoice: String, secondChoice: String) {
         self.problemID = problemID
+        self.problemtitle = problemtitle
+        self.firstChoice = firstChoice
+        self.secondChoice = secondChoice
         super.init(nibName: nil, bundle: nil)
         firstChoiceButton.setTitle(firstChoice, for: .normal)
         secondChoiceButton.setTitle(secondChoice, for: .normal)
@@ -60,6 +66,18 @@ final class BeforeSelectViewController: BaseViewController {
     
     override func setStyle() {
         view.backgroundColor = FirstTeamAsset.white0.color
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.isNavigationBarHidden = false
     }
     
     override func setUI() {
@@ -99,7 +117,13 @@ final class BeforeSelectViewController: BaseViewController {
                 switch result {
                 case .success(let success):
                     dump(success)
-                    // TODO: 뷰 연결
+                    let viewController = ProblemSolveCompleteViewController(
+                        problemtitle: problemtitle,
+                        firstChoice: firstChoice,
+                        secondChoice: secondChoice,
+                        choiceIndex: 0
+                    )
+                    self.navigationController?.pushViewController(viewController, animated: true)
                 case .failure(let failure):
                     dump(failure)
                 }
@@ -117,6 +141,13 @@ final class BeforeSelectViewController: BaseViewController {
                 case .success(let success):
                     dump(success)
                     // TODO: 뷰 연결
+                    let viewController = ProblemSolveCompleteViewController(
+                        problemtitle: problemtitle,
+                        firstChoice: firstChoice,
+                        secondChoice: secondChoice,
+                        choiceIndex: 1
+                    )
+                    self.navigationController?.pushViewController(viewController, animated: true)
                 case .failure(let failure):
                     dump(failure)
                 }

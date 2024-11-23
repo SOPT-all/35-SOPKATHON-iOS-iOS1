@@ -13,6 +13,7 @@ import Then
 final class ProblemSolveViewController: BaseViewController {
     private let problemSolveView = ProblemSolveView(isAfterThreeDays: false)
     private let id: Int
+    private let problemtitle: String
     private let firstChoice: String
     private let secondChoice: String
     // MARK: - View Lifecycle
@@ -28,7 +29,8 @@ final class ProblemSolveViewController: BaseViewController {
         navigationController?.isNavigationBarHidden = false
     }
     
-    init(id: Int, firstChoice: String, secondChoice: String) {
+    init(id: Int, problemtitle: String, firstChoice: String, secondChoice: String) {
+        self.problemtitle = problemtitle
         self.firstChoice = firstChoice
         self.secondChoice = secondChoice
         self.id = id
@@ -37,6 +39,11 @@ final class ProblemSolveViewController: BaseViewController {
     
     @MainActor required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setTarget()
     }
     
     private func setTarget() {
@@ -48,6 +55,7 @@ final class ProblemSolveViewController: BaseViewController {
     private func greenButtonDidTap() {
         let beforeSelectViewController = BeforeSelectViewController(
             problemID: id,
+            problemtitle: problemtitle,
             firstChoice: firstChoice,
             secondChoice: secondChoice
         )
@@ -56,8 +64,7 @@ final class ProblemSolveViewController: BaseViewController {
     
     @objc
     private func grayButtonDidTap() {
-        let problemSolveCompleteViewController = ProblemSolveCompleteViewController()
-        self.navigationController?.pushViewController(problemSolveCompleteViewController, animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     override func setStyle() {

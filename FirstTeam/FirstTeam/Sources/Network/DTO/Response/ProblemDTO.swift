@@ -9,7 +9,8 @@ struct ProblemDTO: Decodable {
     let id: Int
     let title: String
     let items: [ResponseItemDTO]
-    let startDate, endDate: String
+    let startDate: String
+    let endDate: String?
 }
 
 struct ResponseItemDTO: Decodable {

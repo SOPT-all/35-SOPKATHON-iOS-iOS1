@@ -14,6 +14,7 @@ final class HomeViewController: BaseViewController {
     
     private let apiService = APIService()
     private var id: Int?
+    private var problemtitle: String?
     private var firstChoice: String?
     private var secondChoice: String?
     
@@ -87,12 +88,12 @@ final class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        fetchModel()
         navigationController?.isNavigationBarHidden = true
     }
     
@@ -108,10 +109,11 @@ final class HomeViewController: BaseViewController {
             guard let self else { return }
             switch response {
             case .success(let model):
-                if model.isProblemExist,
+                if !model.isProblemExist,
                    let problem = model.problem {
                     self.firstChoice = problem.firstChoice
                     self.secondChoice = problem.secondChoice
+                    self.problemtitle = problem.problem
                     self.id = problem.id
                     nicknameLabel.isHidden = true
                     problemTitleLabel.text = problem.problem
@@ -224,6 +226,7 @@ final class HomeViewController: BaseViewController {
     @objc private func alreadySolveProblemButtonTapped() {
         let problemSolveViewController = ProblemSolveViewController(
             id: id!,
+            problemtitle: problemtitle ?? "",
             firstChoice: firstChoice ?? "",
             secondChoice: secondChoice ?? ""
         )

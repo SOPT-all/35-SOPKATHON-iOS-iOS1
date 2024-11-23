@@ -11,7 +11,7 @@ struct ProblemModel {
     let title: String
     let items: [ProblemContent]
     let startDate: String
-    let endDate: String
+    let endDate: String?
 }
 
 struct ProblemContent {

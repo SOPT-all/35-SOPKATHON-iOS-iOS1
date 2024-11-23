@@ -13,8 +13,15 @@ import SnapKit
 class ProblemSolveCompleteView: BaseView {
     // MARK: - UI Components
     
+    private let problemtitle: String
+    private let firstChoice: String
+    private let secondChoice: String
+    private let choiceIndex: Int
+    
     private let nickNameLabel = UILabel().then {
-        $0.text = "000님의"
+        if let nickname = UserDefaults.standard.string(forKey: "nickname") {
+            $0.text = "\(nickname)님의"
+        }
         $0.font = .pretendard(.title01)
         $0.textColor = UIColor(resource: .black0)
     }
@@ -46,20 +53,18 @@ class ProblemSolveCompleteView: BaseView {
     }
     
     private let problemTitleLabel = UILabel().then {
-        $0.text = "하 다이어트 중인데 불닭 먹기말기 ㅋㅋㅋㅋㅋ 불닭 버전"
         $0.textColor = UIColor(resource: .gray11)
         $0.font = .pretendard(.title03)
         $0.numberOfLines = 0
     }
     
     private let problemItem1Container = UIView().then {
-        $0.backgroundColor = UIColor(resource: .green0)
+        $0.backgroundColor = UIColor(resource: .white0)
         $0.layer.cornerRadius = 8
         $0.clipsToBounds = true
     }
     
     private let problemItem1Label = UILabel().then {
-        $0.text = "일이삼사오육칠팔구십일이삼사오육칠팔구십"
         $0.font = .pretendard(.body06)
         $0.textColor = UIColor(resource: .white0)
         $0.numberOfLines = 0
@@ -72,7 +77,6 @@ class ProblemSolveCompleteView: BaseView {
     }
     
     private let problemItem2Label = UILabel().then {
-        $0.text = "일이삼사오육칠팔구십일이삼사오육칠팔구십"
         $0.font = .pretendard(.body06)
         $0.textColor = UIColor(resource: .gray09)
         $0.numberOfLines = 0
@@ -87,10 +91,13 @@ class ProblemSolveCompleteView: BaseView {
     }
     
     
-    
-    // MARK: - Initializer
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(problemtitle: String, firstChoice: String, secondChoice: String, choiceIndex: Int) {
+        self.problemtitle = problemtitle
+        self.firstChoice = firstChoice
+        self.secondChoice = secondChoice
+        self.choiceIndex = choiceIndex
+        super.init(frame: .zero)
+        
         setStyle()
         setUI()
         setLayout()
@@ -118,6 +125,19 @@ class ProblemSolveCompleteView: BaseView {
                          solveTitleLabel,
                          checkProblemContainerView,
                          goProblemListButton)
+        problemItem1Label.text = firstChoice
+        problemItem2Label.text = secondChoice
+        if choiceIndex == 0 {
+            problemItem1Container.backgroundColor = FirstTeamAsset.green0.color
+            problemItem1Label.textColor = FirstTeamAsset.white0.color
+            problemItem2Container.backgroundColor = FirstTeamAsset.gray01.color
+            problemItem2Label.textColor = FirstTeamAsset.gray09.color
+        } else {
+            problemItem1Container.backgroundColor = FirstTeamAsset.gray01.color
+            problemItem1Label.textColor = FirstTeamAsset.gray09.color
+            problemItem2Container.backgroundColor = FirstTeamAsset.green0.color
+            problemItem2Label.textColor = FirstTeamAsset.white0.color
+        }
     }
     
     override func setLayout() {

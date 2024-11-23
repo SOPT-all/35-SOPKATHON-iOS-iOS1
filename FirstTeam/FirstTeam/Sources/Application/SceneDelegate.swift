@@ -21,7 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         let rootController = UINavigationController(rootViewController: SplashViewController())
-        UserDefaults.standard.removeObject(forKey: "nickname")
+//        UserDefaults.standard.removeObject(forKey: "nickname")
+        
         window?.rootViewController = rootController
         window?.makeKeyAndVisible()
     }

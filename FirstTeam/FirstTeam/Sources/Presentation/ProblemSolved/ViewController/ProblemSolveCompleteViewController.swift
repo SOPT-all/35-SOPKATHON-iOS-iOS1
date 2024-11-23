@@ -11,10 +11,30 @@ import SnapKit
 import Then
 
 final class ProblemSolveCompleteViewController: BaseViewController {
-    private let problemSolveCompleteView = ProblemSolveCompleteView()
+    private lazy var problemSolveCompleteView = ProblemSolveCompleteView(
+        problemtitle: problemtitle,
+        firstChoice: firstChoice,
+        secondChoice: secondChoice,
+        choiceIndex: choiceIndex
+    )
+    private let problemtitle: String
+    private let firstChoice: String
+    private let secondChoice: String
+    private let choiceIndex: Int
+    
+    init(problemtitle: String, firstChoice: String, secondChoice: String, choiceIndex: Int) {
+        self.problemtitle = problemtitle
+        self.firstChoice = firstChoice
+        self.secondChoice = secondChoice
+        self.choiceIndex = choiceIndex
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @MainActor required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - View Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
