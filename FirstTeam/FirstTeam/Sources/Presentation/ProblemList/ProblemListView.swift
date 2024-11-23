@@ -27,7 +27,7 @@ final class ProblemListView: BaseView {
     
     override func setLayout() {
         tableView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(70)
+            $0.top.equalToSuperview().inset(100)
             $0.leading.trailing.bottom.equalToSuperview().inset(20)
         }
     }

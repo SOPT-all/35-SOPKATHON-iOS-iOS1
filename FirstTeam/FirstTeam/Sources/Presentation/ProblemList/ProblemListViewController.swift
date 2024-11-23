@@ -20,6 +20,7 @@ final class ProblemListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBarTitle(with: "해결된 고민 리스트")
         register()
         setupDelegate()
     }
