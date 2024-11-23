@@ -9,8 +9,12 @@ import UIKit
 
 final class NicknameView: BaseView {
     
+    private let logoImageView = UIImageView().then {
+        $0.image = UIImage(resource: .logo)
+    }
+    
     private let commentLabel = UILabel().then {
-        $0.text = "결정이 어려운 당신,\n닉네임을 입력해 주세요!"
+        $0.text = "결정이 어려운 당신,\n닉네임을 적어주삼!"
         $0.font = .pretendard(.title01)
         $0.numberOfLines = 2
     }
@@ -60,6 +64,7 @@ final class NicknameView: BaseView {
     
     override func setUI() {
         self.addSubviews(
+            logoImageView,
             commentLabel,
             nicknameTextField,
             myLengthLabel,
@@ -70,6 +75,13 @@ final class NicknameView: BaseView {
     }
     
     override func setLayout() {
+        logoImageView.snp.makeConstraints{
+            $0.height.equalTo(16)
+            $0.width.equalTo(66)
+            $0.leading.equalToSuperview().inset(20)
+            $0.top.equalToSuperview().inset(63)
+        }
+        
         commentLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(152)
             $0.leading.equalToSuperview().inset(20)
