@@ -7,7 +7,7 @@
 |🔖 조성민</br>[@SungMinCho-Kor](https://github.com/SungMinCho-Kor)|🔖 김수연</br>[@mmaybei](https://github.com/mmaybei)|🔖 김송희</br>[@hongseekim](https://github.com/hongseekim)|🔖 김예지</br>[@mnbvcxzyj](https://github.com/mnbvcxzyj)|
 |:---:|:---:|:---:|:---:|
 |<img src = "https://github.com/SungMinCho-Kor.png" width ="250">|<img src = "https://github.com/mmaybei.png" width ="250">|<img src = "https://github.com/hongseekim.png" width ="250">|<img src = "https://github.com/mnbvcxzyj.png" width ="250">|
-|`맡은 뷰`|`맡은 뷰`|`맡은 뷰`|`맡은 뷰`|
+|`프로젝트 세팅` `네트워크`|`맡은 뷰`|`맡은 뷰`|`맡은 뷰`|
 </br>
 
 # 🌀 Library
@@ -46,7 +46,7 @@ feat: 홈 화면 UI 구현
 ```
 </br>
 
-# 🧤 Git Flow
+# 🧤 Branch Strategy
 ```
 develop 브랜치에서 이슈 번호에 맞는 feature 브랜치를 파서 작업을 진행하고, PR 또한 develop 브랜치로 날려줍니다!
 
