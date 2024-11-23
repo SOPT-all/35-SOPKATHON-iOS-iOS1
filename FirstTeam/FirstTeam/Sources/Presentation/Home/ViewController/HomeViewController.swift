@@ -87,8 +87,8 @@ final class HomeViewController: BaseViewController {
     
     // TODO: API 호출로 변경
     private func fetchModel() {
-//        model = HomeModel.noProblemMockData
-        model = HomeModel.problemExistMockData
+        model = HomeModel.noProblemMockData
+//        model = HomeModel.problemExistMockData
         guard let model else { return }
         if model.isProblemExist {
             nicknameLabel.isHidden = true
@@ -96,6 +96,7 @@ final class HomeViewController: BaseViewController {
             announceLabel.text = "함께 고민하고 있삼!"
             subAnnounceLabel.text = convertDate(date: model.startDate ?? Date())
             createProblemButton.isEnabled = false
+            alreadySolveProblemButton.isHidden = false
         } else {
             nicknameLabel.isHidden = false
             nicknameLabel.text = model.nickname
@@ -103,6 +104,7 @@ final class HomeViewController: BaseViewController {
             announceLabel.text = "지금 고민 없삼?"
             subAnnounceLabel.text = "같이 고민해주겠삼!"
             createProblemButton.isEnabled = true
+            alreadySolveProblemButton.isHidden = true
         }
     }
     
