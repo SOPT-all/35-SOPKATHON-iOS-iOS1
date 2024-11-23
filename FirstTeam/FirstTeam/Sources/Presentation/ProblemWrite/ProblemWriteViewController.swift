@@ -21,7 +21,8 @@ final class ProblemWriteViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setTarget()
+        rootView.titleTextField.delegate = self
+        
         setGesture()
         addKeyboardObservers()
     }
@@ -29,11 +30,7 @@ final class ProblemWriteViewController: BaseViewController {
     deinit {
         removeKeyboardObservers()
     }
-    
-    private func setTarget() {
-        rootView.titleTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-    }
-    
+        
     private func setGesture() {
         let tapGesture = UITapGestureRecognizer(
             target: self,
@@ -41,20 +38,7 @@ final class ProblemWriteViewController: BaseViewController {
         )
         view.addGestureRecognizer(tapGesture)
     }
-    
-    private func checkValid(text: String?) {
-        guard let text = text else { return }
-        rootView.countLabel.text = "\(text.count)/25"
-        isValid = text.count > 0  && text.count < 25
-        if isValid {
-            rootView.nextButton.backgroundColor = UIColor(resource: .green0)
-            rootView.nextButton.isEnabled = true
-        } else {
-            rootView.nextButton.backgroundColor = UIColor(resource: .gray05)
-            rootView.nextButton.isEnabled = false
-        }
-    }
-    
+        
     private func addKeyboardObservers() {
         NotificationCenter.default.addObserver(
             self,
@@ -73,11 +57,6 @@ final class ProblemWriteViewController: BaseViewController {
     private func removeKeyboardObservers() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc
-    private func textFieldDidChange(_ textField: UITextField) {
-        checkValid(text: rootView.titleTextField.text)
     }
     
     @objc
@@ -111,3 +90,41 @@ final class ProblemWriteViewController: BaseViewController {
         }
     }
 }
+
+extension ProblemWriteViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(
+        _ textField: UITextField
+    ) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
+        let currentText = textField.text ?? ""
+        
+        guard let textRange = Range(range, in: currentText) else {
+            return false
+        }
+        let updatedText = currentText.replacingCharacters(in: textRange, with: string)
+        
+        if updatedText.count > 0 {
+            rootView.nextButton.backgroundColor = UIColor(resource: .green0)
+            rootView.nextButton.isEnabled = true
+        } else {
+            rootView.nextButton.backgroundColor = UIColor(resource: .gray05)
+            rootView.nextButton.isEnabled = false
+        }
+        
+        if updatedText.count > 25 {
+            return false
+        } else {
+            rootView.countLabel.text = "\(updatedText.count)/25"
+            return updatedText.count <= 25
+        }
+    }
+}
+

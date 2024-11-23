@@ -31,6 +31,10 @@ final class CustomTextField: UITextField {
         setPlaceholder(text: placeholder, color: UIColor(resource: .gray05), font: .pretendard(.body02))
         addPadding(left: 20, right:20)
         layer.cornerRadius = 8
+        autocorrectionType = .no
+        spellCheckingType = .no
+        autocapitalizationType = .none
+        clearsOnBeginEditing = false
     }
     
     func setPlaceholder(text: String, color: UIColor, font: UIFont) {

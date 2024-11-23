@@ -12,7 +12,7 @@ import SnapKit
 
 final class ProblemWriteView: BaseView {
     private let titleLabel = UILabel().then {
-        $0.text = "지금 무엇을 고민하고 있나요?"
+        $0.text = "지금 무엇이 고민이삼?"
         $0.font = .pretendard(.title01)
         $0.textColor = UIColor(resource: .black0)
     }
