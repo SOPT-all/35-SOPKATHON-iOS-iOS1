@@ -1,5 +1,5 @@
 ```
-35기 AND SOPT 솝커톤 iOS 1팀 삼사숙고 프로젝트입니다.
+35기 AND SOPT 솝커톤 iOS 1팀 골라주삼 프로젝트입니다.
 나홀로 심사숙고는 이제 그만, 3일만 기다리면 대신 결정해드립니다! 
 ```
 </br>
@@ -8,7 +8,7 @@
 |🔖 조성민</br>[@SungMinCho-Kor](https://github.com/SungMinCho-Kor)|🔖 김수연</br>[@mmaybei](https://github.com/mmaybei)|🔖 김송희</br>[@hongseekim](https://github.com/hongseekim)|🔖 김예지</br>[@mnbvcxzyj](https://github.com/mnbvcxzyj)|
 |:---:|:---:|:---:|:---:|
 |<img src = "https://github.com/SungMinCho-Kor.png" width ="250">|<img src = "https://github.com/mmaybei.png" width ="250">|<img src = "https://github.com/hongseekim.png" width ="250">|<img src = "https://github.com/mnbvcxzyj.png" width ="250">|
-|`프로젝트 세팅` `홈` `고민 해결 리스트`|`고민 입력 뷰`|`닉네임 입력 뷰`|`고민 접수 뷰`|
+|`프로젝트 세팅` `홈`|`고민 입력 뷰` `고민 해결 리스트`|`스플래쉬` `닉네임 입력 뷰`|`고민 접수 뷰` `해결 완료 뷰`|
 </br>
 
 # 🌀 Library
