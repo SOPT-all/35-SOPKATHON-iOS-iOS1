@@ -1,6 +1,6 @@
 ```
 35기 AND SOPT 솝커톤 iOS 1팀 골라주삼 프로젝트입니다.
-나홀로 심사숙고는 이제 그만, 3일만 기다리면 대신 결정해드립니다! 
+나홀로 끝나지 않는 답답한 고민은 이제 그만, 3일만 기다리면 대신 결정해드립니다! 
 ```
 </br>
 
@@ -38,8 +38,8 @@ build: 프로젝트 관련 설정 변경 시 사용
 ```
 ```
 브랜치의 경우 이슈 번호를 붙여 다음과 같이 작성합니다.
-feature/#3
-hotfix/#22
+Feature/#3
+Hotfix/#22
 
 커밋의 경우 다음과 같이 작성합니다.
 add: 사진 에셋 추가
@@ -72,3 +72,14 @@ PR을 작성하면 작성자 이외의 다른 팀원들이 코드 리뷰를 진�
 |각시|보쌈 와앙|
 |:---:|:---:|
 |<img src = "https://github.com/user-attachments/assets/9ee2a1f6-92e8-4cfb-9a70-115d6d933c59" width ="500">|<img src = "https://github.com/user-attachments/assets/8333db39-29fe-47f2-bf03-d19de19384a9" width ="500">|
+
+### after
+|각시|보쌈 와앙|
+|:---:|:---:|
+|<img src = "" width ="500">|<img src = "" width ="500">|
+
+
+# 📱 Demonstration
+|시연 영상|
+|:---:|
+|<img src = "" width ="500">|
