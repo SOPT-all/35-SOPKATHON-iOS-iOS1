@@ -8,6 +8,8 @@
 import UIKit
 
 final class BeforeSelectViewController: BaseViewController {
+    private let apiService = APIService()
+    private let problemID: Int
     private let announceLabel = UILabel().then {
         $0.text = "뭘 선택했삼?"
         $0.font = .pretendard(.title01)
@@ -22,7 +24,7 @@ final class BeforeSelectViewController: BaseViewController {
         $0.setTitleColor(FirstTeamAsset.black0.color, for: .normal)
         $0.addTarget(
             self,
-            action: #selector(choiceButtonTapped),
+            action: #selector(firstChoiceButtonTapped),
             for: .touchUpInside
         )
     }
@@ -34,11 +36,25 @@ final class BeforeSelectViewController: BaseViewController {
         $0.titleLabel?.font = .pretendard(.body01)
         $0.titleLabel?.textColor = FirstTeamAsset.black0.color
         $0.setTitleColor(FirstTeamAsset.black0.color, for: .normal)
+        $0.addTarget(
+            self,
+            action: #selector(secondChoiceButtonTapped),
+            for: .touchUpInside
+        )
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchModel()
+    }
+    
+    init(problemID: Int) {
+        self.problemID = problemID
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func setStyle() {
@@ -84,8 +100,38 @@ final class BeforeSelectViewController: BaseViewController {
         )
     }
     
-    @objc private func choiceButtonTapped() {
+    @objc private func firstChoiceButtonTapped() {
         // TODO: API 호출
         // TODO: 뷰 연결
+        apiService.putProblemSolve(
+            problemID: self.problemID,
+            choiceIndex: 0) { [weak self] result in
+                guard let self else { return }
+                switch result {
+                case .success(let success):
+                    dump(success)
+                    // TODO: 뷰 연결
+                case .failure(let failure):
+                    dump(failure)
+                }
+            }
+    }
+    
+    @objc private func secondChoiceButtonTapped() {
+        // TODO: API 호출
+        // TODO: 뷰 연결
+        apiService.putProblemSolve(
+            problemID: self.problemID,
+            choiceIndex: 1) { [weak self] result in
+                guard let self else { return }
+                switch result {
+                case .success(let success):
+                    dump(success)
+                    // TODO: 뷰 연결
+                case .failure(let failure):
+                    dump(failure)
+                }
+            }
+        
     }
 }

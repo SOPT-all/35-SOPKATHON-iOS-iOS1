@@ -6,6 +6,7 @@
 //
 
 struct BeforeSelectModel {
+    let id: Int
     let firstChoice: String
     let secondChoice: String
 }

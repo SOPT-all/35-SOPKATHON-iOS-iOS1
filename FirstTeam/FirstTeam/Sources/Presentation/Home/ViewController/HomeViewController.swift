@@ -12,6 +12,7 @@ import Then
 
 final class HomeViewController: BaseViewController {
     
+    private let apiService = APIService()
     private var model: HomeModel?
     
     private let nicknameLabel = UILabel().then {
@@ -101,25 +102,33 @@ final class HomeViewController: BaseViewController {
     
     // TODO: API 호출로 변경
     private func fetchModel() {
-        model = HomeModel.noProblemMockData
-//        model = HomeModel.problemExistMockData
-        guard let model else { return }
-        if model.isProblemExist {
-            nicknameLabel.isHidden = true
-            problemTitleLabel.text = model.problem ?? ""
-            announceLabel.text = "함께 고민하고 있삼!"
-            subAnnounceLabel.text = convertDate(date: model.startDate ?? Date())
-            createProblemButton.isEnabled = false
-            alreadySolveProblemButton.isHidden = false
-        } else {
-            nicknameLabel.isHidden = false
-            nicknameLabel.text = model.nickname
-            problemTitleLabel.isHidden = true
-            announceLabel.text = "지금 고민 없삼?"
-            subAnnounceLabel.text = "같이 고민해주겠삼!"
-            createProblemButton.isEnabled = true
-            alreadySolveProblemButton.isHidden = true
-            problemImageView.image = FirstTeamAsset._0step.image
+        apiService.fetchCurrentProblem { [weak self] response in
+            guard let self else { return }
+            switch response {
+            case .success(let model):
+                if model.isProblemExist,
+                   let problem = model.problem {
+                    nicknameLabel.isHidden = true
+                    problemTitleLabel.text = problem.problem
+                    announceLabel.text = "함께 고민하고 있삼!"
+                    subAnnounceLabel.text = convertDate(date: problem.startDate)
+                    createProblemButton.isEnabled = false
+                    alreadySolveProblemButton.isHidden = false
+                } else {
+                    nicknameLabel.isHidden = false
+                    if let nickname = UserDefaults.standard.string(forKey: "nickname") {
+                        nicknameLabel.text = nickname
+                    }
+                    problemTitleLabel.isHidden = true
+                    announceLabel.text = "지금 고민 없삼?"
+                    subAnnounceLabel.text = "같이 고민해주겠삼!"
+                    createProblemButton.isEnabled = true
+                    alreadySolveProblemButton.isHidden = true
+                    problemImageView.image = FirstTeamAsset._0step.image
+                }
+            case .failure(let failure):
+                dump(failure)
+            }
         }
     }
     

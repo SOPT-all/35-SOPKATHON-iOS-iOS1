@@ -10,8 +10,10 @@ import Foundation
 
 enum DefaultRouter {
     
-    case postExample(dto: RequestExampleDTO)
-    case getExample
+    case fetchCurrentProblem
+    case fetchSolvedProblemList
+    case postProblem(dto: PostProblemDTO)
+    case solveProblem(problemId: Int, dto: ProblemSolveDTO)
     
 }
 
@@ -23,19 +25,27 @@ extension DefaultRouter: Router {
     
     var path: String {
         switch self {
-        case .postExample:
-            "/example"
-        case .getExample:
-            "/get/example"
+        case .fetchCurrentProblem:
+            "/problems/current"
+        case .fetchSolvedProblemList:
+            "/problems"
+        case .postProblem(let dto):
+            "/problems"
+        case .solveProblem(let id, let dto):
+            "/problems/\(id)"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .postExample:
+        case .fetchCurrentProblem:
+                .get
+        case .fetchSolvedProblemList:
+                .get
+        case .postProblem(let dto):
                 .post
-        case .getExample:
-                .post
+        case .solveProblem(_, let dto):
+                .put
         }
     }
     
@@ -50,19 +60,27 @@ extension DefaultRouter: Router {
     
     var parameters: [String : Any] {
         switch self {
-        case .postExample(let dto):
-            return dto.asDictionary()
-        case .getExample:
-            return [:]
+        case .fetchCurrentProblem:
+            [:]
+        case .fetchSolvedProblemList:
+            [:]
+        case .postProblem(let dto):
+            dto.asDictionary()
+        case .solveProblem(_, let dto):
+            dto.asDictionary()
         }
     }
     
     var encoding: (any ParameterEncoding)? {
         switch self {
-        case .postExample:
+        case .fetchCurrentProblem:
+            nil
+        case .fetchSolvedProblemList:
+            nil
+        case .postProblem:
             JSONEncoding.default
-        case .getExample:
-            URLEncoding.default
+        case .solveProblem:
+            JSONEncoding.default
         }
     }
     
