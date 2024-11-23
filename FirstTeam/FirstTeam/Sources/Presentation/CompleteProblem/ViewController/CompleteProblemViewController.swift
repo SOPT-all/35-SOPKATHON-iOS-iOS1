@@ -1,8 +1,8 @@
 //
-//  CheckProblemViewController.swift
+//  CompleteProblemViewController.swift
 //  FirstTeam
 //
-//  Created by 김예지 on 11/23/24.
+//  Created by 예삐 on 11/24/24.
 //
 
 import UIKit
@@ -10,9 +10,9 @@ import UIKit
 import Then
 import SnapKit
 
-final class CheckProblemViewController: BaseViewController {
+final class CompleteProblemViewController: BaseViewController {
     // MARK: - UI Components
-    private let checkProblemView = CheckProblemView()
+    private let completeProblemView = CompleteProblemView()
     
     // MARK: - View Lifecycle
     override func setStyle() {
@@ -20,11 +20,11 @@ final class CheckProblemViewController: BaseViewController {
     }
     
     override func setUI() {
-        view.addSubview(checkProblemView)
+        view.addSubview(completeProblemView)
     }
 
     override func setLayout() {
-        checkProblemView.snp.makeConstraints {
+        completeProblemView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
