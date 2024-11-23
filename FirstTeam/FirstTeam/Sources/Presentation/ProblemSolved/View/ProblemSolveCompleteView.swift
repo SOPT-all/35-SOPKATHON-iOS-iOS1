@@ -53,7 +53,7 @@ class ProblemSolveCompleteView: BaseView {
     }
     
     private let problemItem1Container = UIView().then {
-        $0.backgroundColor = UIColor(resource: .gray01)
+        $0.backgroundColor = UIColor(resource: .green0)
         $0.layer.cornerRadius = 8
         $0.clipsToBounds = true
     }
@@ -61,12 +61,12 @@ class ProblemSolveCompleteView: BaseView {
     private let problemItem1Label = UILabel().then {
         $0.text = "일이삼사오육칠팔구십일이삼사오육칠팔구십"
         $0.font = .pretendard(.body06)
-        $0.textColor = UIColor(resource: .gray09)
+        $0.textColor = UIColor(resource: .white0)
         $0.numberOfLines = 0
     }
     
     private let problemItem2Container = UIView().then {
-        $0.backgroundColor = UIColor(resource: .gray01)
+        $0.backgroundColor = UIColor(resource: .white0)
         $0.layer.cornerRadius = 8
         $0.clipsToBounds = true
     }
@@ -79,12 +79,14 @@ class ProblemSolveCompleteView: BaseView {
     }
     
     private let goProblemListButton = UIButton().then {
-        $0.setTitle("고민 리스트", for: .normal)
+        $0.setTitle("홈으로 가기", for: .normal)
         $0.titleLabel?.font = .pretendard(.subtitle01)
-        $0.setTitleColor(UIColor(resource: .white0), for: .normal)
         $0.backgroundColor = UIColor(resource: .green0)
+        $0.setTitleColor(UIColor(resource: .white0), for: .normal)
         $0.layer.cornerRadius = 12
     }
+    
+    
     
     // MARK: - Initializer
     override init(frame: CGRect) {
@@ -117,10 +119,10 @@ class ProblemSolveCompleteView: BaseView {
                          checkProblemContainerView,
                          goProblemListButton)
     }
-
+    
     override func setLayout() {
         nickNameLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(62)
+            $0.top.equalToSuperview().offset(116)
             $0.horizontalEdges.equalToSuperview().inset(24)
         }
         
@@ -177,8 +179,7 @@ class ProblemSolveCompleteView: BaseView {
         goProblemListButton.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(54)
-            $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).inset(71)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).inset(14)
         }
     }
-
 }
