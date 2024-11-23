@@ -1,11 +1,11 @@
 //
-//  ProblemRequestDTO.swift
+//  PostProblemDTO.swift
 //  FirstTeam
 //
 //  Created by 조성민 on 11/24/24.
 //
 
-struct ProblemRequestDTO: Encodable {
+struct PostProblemDTO: Encodable {
     let title: String
     let items: [RequestItemDTO]
 }
