@@ -20,7 +20,9 @@ final class SelectionWriteViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBarTitle(with: "고민 작성하기")
         setTarget()
+        setupDelegate()
         setGesture()
         addKeyboardObservers()
     }
@@ -32,6 +34,11 @@ final class SelectionWriteViewController: BaseViewController {
     private func setTarget() {
         rootView.firstTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         rootView.secondTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    private func setupDelegate() {
+        rootView.firstTextField.delegate = self
+        rootView.secondTextField.delegate = self
     }
     
     private func setGesture() {
@@ -98,7 +105,7 @@ final class SelectionWriteViewController: BaseViewController {
         let keyboardHeight = keyboardFrame.height
         UIView.animate(withDuration: animationDuration) {
             self.rootView.nextButton.snp.updateConstraints {
-                $0.bottom.equalToSuperview().inset(keyboardHeight + 20) // 키보드 위 20pt 여백
+                $0.bottom.equalToSuperview().inset(keyboardHeight + 20)
             }
             self.view.layoutIfNeeded()
         }
@@ -110,9 +117,37 @@ final class SelectionWriteViewController: BaseViewController {
         
         UIView.animate(withDuration: animationDuration) {
             self.rootView.nextButton.snp.updateConstraints {
-                $0.bottom.equalToSuperview().inset(44) // 원래 위치로 복원
+                $0.bottom.equalToSuperview().inset(44)
             }
             self.view.layoutIfNeeded()
+        }
+    }
+}
+
+extension SelectionWriteViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(
+        _ textField: UITextField
+    ) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
+        let currentText = textField.text ?? ""
+        
+        guard let textRange = Range(range, in: currentText) else {
+            return false
+        }
+        let updatedText = currentText.replacingCharacters(in: textRange, with: string)
+        
+        if updatedText.count > 25 {
+            return false
+        } else {
+            return updatedText.count <= 25
         }
     }
 }

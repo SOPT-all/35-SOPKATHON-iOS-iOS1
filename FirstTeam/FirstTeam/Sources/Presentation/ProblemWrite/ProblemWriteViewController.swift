@@ -23,6 +23,7 @@ final class ProblemWriteViewController: BaseViewController {
         
         rootView.titleTextField.delegate = self
         
+        setupNavigationBarTitle(with: "고민 작성하기")
         setGesture()
         addKeyboardObservers()
     }
@@ -72,7 +73,7 @@ final class ProblemWriteViewController: BaseViewController {
         let keyboardHeight = keyboardFrame.height
         UIView.animate(withDuration: animationDuration) {
             self.rootView.nextButton.snp.updateConstraints {
-                $0.bottom.equalToSuperview().inset(keyboardHeight + 20) // 키보드 위 20pt 여백
+                $0.bottom.equalToSuperview().inset(keyboardHeight + 20)
             }
             self.view.layoutIfNeeded()
         }
@@ -84,7 +85,7 @@ final class ProblemWriteViewController: BaseViewController {
         
         UIView.animate(withDuration: animationDuration) {
             self.rootView.nextButton.snp.updateConstraints {
-                $0.bottom.equalToSuperview().inset(44) // 원래 위치로 복원
+                $0.bottom.equalToSuperview().inset(44)
             }
             self.view.layoutIfNeeded()
         }
