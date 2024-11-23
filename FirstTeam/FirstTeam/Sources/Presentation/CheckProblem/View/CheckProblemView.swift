@@ -18,7 +18,7 @@ final class CheckProblemView: BaseView {
         paragraphStyle.lineSpacing = 4
         
         let attributedText = NSMutableAttributedString(
-            string: "3일 동안 심사숙고 할 내용을\n한 번 더 확인해 주삼!",
+            string: "3일 동안 고민할 내용을\n한 번 더 확인해 주삼!",
             attributes: [
                 .font: UIFont.pretendard(.title01),
                 .foregroundColor: UIColor(resource: .black0),
@@ -40,18 +40,18 @@ final class CheckProblemView: BaseView {
     }
     
     private let dateStartLabel = UILabel().then {
-        $0.text = "2023.04.04 "
+        $0.text = "2024.11.24 "
         $0.font = .pretendard(.caption01)
         $0.textColor = UIColor(resource: .gray07)
     }
     
     private let dateEndLabel = UILabel().then {
-        $0.text = "- 2024.04.07"
+        $0.text = "- 2024.11.27"
         $0.font = .pretendard(.caption01)
         $0.textColor = UIColor(resource: .gray07)
     }
     
-    private let problemTitleLabel = UILabel().then {
+    let problemTitleLabel = UILabel().then {
         $0.text = "하 다이어트 중인데 불닭 먹기말기 ㅋㅋㅋㅋㅋ 불닭 버전"
         $0.textColor = UIColor(resource: .gray11)
         $0.font = .pretendard(.title03)
@@ -64,7 +64,7 @@ final class CheckProblemView: BaseView {
         $0.clipsToBounds = true
     }
     
-    private let worryItem1Label = UILabel().then {
+    let worryItem1Label = UILabel().then {
         $0.text = "일이삼사오육칠팔구십일이삼사오육칠팔구십"
         $0.font = .pretendard(.body06)
         $0.textColor = UIColor(resource: .gray09)
@@ -77,7 +77,7 @@ final class CheckProblemView: BaseView {
         $0.clipsToBounds = true
     }
     
-    private let worryItem2Label = UILabel().then {
+    let worryItem2Label = UILabel().then {
         $0.text = "일이삼사오육칠팔구십일이삼사오육칠팔구십"
         $0.font = .pretendard(.body06)
         $0.textColor = UIColor(resource: .gray09)

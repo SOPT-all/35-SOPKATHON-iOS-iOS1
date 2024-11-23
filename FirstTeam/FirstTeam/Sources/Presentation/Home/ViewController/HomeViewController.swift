@@ -87,10 +87,22 @@ final class HomeViewController: BaseViewController {
         fetchModel()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.isNavigationBarHidden = false
+    }
+    
     // TODO: API 호출로 변경
     private func fetchModel() {
-//        model = HomeModel.noProblemMockData
-        model = HomeModel.problemExistMockData
+        model = HomeModel.noProblemMockData
+//        model = HomeModel.problemExistMockData
         guard let model else { return }
         if model.isProblemExist {
             nicknameLabel.isHidden = true
@@ -186,15 +198,18 @@ final class HomeViewController: BaseViewController {
     }
     
     @objc private func createProblemButtonTapped() {
-        // TODO: 고민 생성 페이지로 이동
+        let problemWriteViewController = ProblemWriteViewController()
+        self.navigationController?.pushViewController(problemWriteViewController, animated: true)
     }
     
     @objc private func problemListButtonTapped() {
-        // TODO: 고민 리스트 페이지로 이동
+        let problemListViewController = ProblemListViewController()
+        self.navigationController?.pushViewController(problemListViewController, animated: true)
     }
     
     @objc private func alreadySolveProblemButtonTapped() {
-        // TODO: 고민 미리 해결 페이지로 이동
+        let problemSolveViewController = ProblemSolveViewController()
+        self.navigationController?.pushViewController(problemSolveViewController, animated: true)
     }
     
     private func convertDate(date: Date) -> String {

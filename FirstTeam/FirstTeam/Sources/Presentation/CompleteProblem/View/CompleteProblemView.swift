@@ -22,7 +22,7 @@ final class CompleteProblemView: BaseView {
         paragraphStyle.lineSpacing = 4
         
         let attributedText = NSMutableAttributedString(
-            string: "3일 동안 천천히 고민해 보삼.\n  우리도 함께 고민해 보겠삼!",
+            string: "3일만 더 고민해 보삼.\n  우리도 함께 고민해 보겠삼!",
             attributes: [
                 .font: UIFont.pretendard(.title02),
                 .foregroundColor: UIColor(resource: .black0),
