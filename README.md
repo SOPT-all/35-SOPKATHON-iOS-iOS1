@@ -80,6 +80,6 @@ PR을 작성하면 작성자 이외의 다른 팀원들이 코드 리뷰를 진�
 
 
 # 📱 Demonstration
-|시연 영상|
-|:---:|
-|<img src = "" width ="500">|
+|온보딩/고민 입력/접수|고민 리스트|고민 해결|
+|:---:|:---:|:---:|
+|<img src = "https://github.com/user-attachments/assets/eb9190ff-b73b-45d7-baa3-b1d2b86ced5a" width ="500">|<img src = "https://github.com/user-attachments/assets/0bb88b1f-5d62-4333-81d9-4b020b1a7d0f" width ="500">|<img src = "https://github.com/user-attachments/assets/92b28dc7-8210-46ae-a2fd-bb87d0e8e98d" width ="500">|
