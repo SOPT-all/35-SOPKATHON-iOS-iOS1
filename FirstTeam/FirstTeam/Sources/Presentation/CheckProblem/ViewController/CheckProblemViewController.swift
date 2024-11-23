@@ -15,6 +15,11 @@ final class CheckProblemViewController: BaseViewController {
     private let checkProblemView = CheckProblemView()
     
     // MARK: - View Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupNavigationBarTitle(with: "고민 확인하기")
+    }
     override func setStyle() {
         view.backgroundColor = .white
     }
