@@ -39,7 +39,7 @@ final class HomeViewController: BaseViewController {
     
     private lazy var alreadySolveProblemButton = UIButton().then {
         $0.setTitle(
-            "이미 고민이 해결되었나요?",
+            "혹시... 이미 고민이 해결되었삼?",
             for: .normal
         )
         $0.setTitleColor(FirstTeamAsset.green0.color, for: .normal)
@@ -87,8 +87,8 @@ final class HomeViewController: BaseViewController {
     
     // TODO: API 호출로 변경
     private func fetchModel() {
-        model = HomeModel.noProblemMockData
-//        model = HomeModel.problemExistMockData
+//        model = HomeModel.noProblemMockData
+        model = HomeModel.problemExistMockData
         guard let model else { return }
         if model.isProblemExist {
             nicknameLabel.isHidden = true
@@ -112,8 +112,8 @@ final class HomeViewController: BaseViewController {
             announceLabel,
             subAnnounceLabel,
             problemTitleLabel,
-            problemImageView,
             alreadySolveProblemButton,
+            problemImageView,
             bottomContainerView
         )
         
@@ -149,6 +149,11 @@ final class HomeViewController: BaseViewController {
             $0.leading.equalTo(nicknameLabel)
         }
         
+        alreadySolveProblemButton.snp.makeConstraints {
+            $0.top.equalTo(subAnnounceLabel.snp.bottom).offset(12)
+            $0.leading.equalTo(nicknameLabel)
+        }
+        
         // TODO: 피그마에 따라 수정
         problemImageView.snp.makeConstraints {
             $0.center.equalToSuperview()
@@ -158,11 +163,6 @@ final class HomeViewController: BaseViewController {
         bottomContainerView.snp.makeConstraints {
             $0.horizontalEdges.bottom.equalToSuperview()
             $0.height.equalTo(204)
-        }
-        
-        alreadySolveProblemButton.snp.makeConstraints {
-            $0.bottom.equalTo(bottomContainerView.snp.top).offset(-20)
-            $0.centerX.equalToSuperview()
         }
         
         createProblemButton.snp.makeConstraints {
