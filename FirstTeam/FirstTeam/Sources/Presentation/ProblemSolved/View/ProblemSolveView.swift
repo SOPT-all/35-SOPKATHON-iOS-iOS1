@@ -30,7 +30,7 @@ class ProblemSolveView: BaseView {
         $0.numberOfLines = 1
     }
     
-    private let greenButton = UIButton().then {
+    let greenButton = UIButton().then {
         $0.setTitle("나 대신 골라주삼!", for: .normal)
         $0.titleLabel?.font = .pretendard(.subtitle01)
         $0.setTitleColor(UIColor(resource: .white0), for: .normal)
@@ -38,7 +38,7 @@ class ProblemSolveView: BaseView {
         $0.layer.cornerRadius = 12
     }
     
-    private let grayButton = UIButton().then {
+    let grayButton = UIButton().then {
         $0.setTitle("해결했어요!", for: .normal)
         $0.titleLabel?.font = .pretendard(.subtitle01)
         $0.setTitleColor(UIColor(resource: .white0), for: .normal)

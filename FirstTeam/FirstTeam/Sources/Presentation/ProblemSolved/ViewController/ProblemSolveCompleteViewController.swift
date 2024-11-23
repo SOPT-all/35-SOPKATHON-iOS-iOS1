@@ -14,6 +14,35 @@ final class ProblemSolveCompleteViewController: BaseViewController {
     private let problemSolveCompleteView = ProblemSolveCompleteView()
     
     // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setTarget()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    private func setTarget() {
+        problemSolveCompleteView.goProblemListButton.addTarget(self, action: #selector(goProblemListButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc
+    private func goProblemListButtonDidTap() {
+        let homeViewController = HomeViewController()
+        self.navigationController?.pushViewController(homeViewController, animated: true)
+    }
+    
     override func setStyle() {
         view.backgroundColor = .white
     }

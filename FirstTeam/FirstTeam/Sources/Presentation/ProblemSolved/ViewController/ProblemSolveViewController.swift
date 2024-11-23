@@ -26,6 +26,23 @@ final class ProblemSolveViewController: BaseViewController {
         navigationController?.isNavigationBarHidden = false
     }
     
+    private func setTarget() {
+        problemSolveView.greenButton.addTarget(self, action: #selector(greenButtonDidTap), for: .touchUpInside)
+        problemSolveView.grayButton.addTarget(self, action: #selector(grayButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc
+    private func greenButtonDidTap() {
+        let beforeSelectViewController = BeforeSelectViewController()
+        self.navigationController?.pushViewController(beforeSelectViewController, animated: true)
+    }
+    
+    @objc
+    private func grayButtonDidTap() {
+        let problemSolveCompleteViewController = ProblemSolveCompleteViewController()
+        self.navigationController?.pushViewController(problemSolveCompleteViewController, animated: true)
+    }
+    
     override func setStyle() {
         view.backgroundColor = .white
     }
