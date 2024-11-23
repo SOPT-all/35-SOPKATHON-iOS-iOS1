@@ -76,7 +76,7 @@ PR을 작성하면 작성자 이외의 다른 팀원들이 코드 리뷰를 진�
 ### after
 |각시|보쌈 와앙|
 |:---:|:---:|
-|<img src = "" width ="500">|<img src = "" width ="500">|
+|<img src = "https://github.com/user-attachments/assets/32a8e70b-9689-48ed-ac8c-8821a67f80b1" width ="500">|<img src = "https://github.com/user-attachments/assets/4c5d5902-687a-46f1-b613-5b685658e013" width ="500">|
 
 
 # 📱 Demonstration
