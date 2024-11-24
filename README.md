@@ -73,10 +73,15 @@ PR을 작성하면 작성자 이외의 다른 팀원들이 코드 리뷰를 진�
 |:---:|:---:|
 |<img src = "https://github.com/user-attachments/assets/9ee2a1f6-92e8-4cfb-9a70-115d6d933c59" width ="500">|<img src = "https://github.com/user-attachments/assets/8333db39-29fe-47f2-bf03-d19de19384a9" width ="500">|
 
-### after
+### during
 |각시|보쌈 와앙|
 |:---:|:---:|
 |<img src = "https://github.com/user-attachments/assets/32a8e70b-9689-48ed-ac8c-8821a67f80b1" width ="500">|<img src = "https://github.com/user-attachments/assets/4c5d5902-687a-46f1-b613-5b685658e013" width ="500">|
+
+### after
+|각시|보쌈 와앙|
+|:---:|:---:|
+|<img src = "https://github.com/user-attachments/assets/c26554c3-417c-4db9-ab5a-c987ee13b99b" width ="500">|<img src = "https://github.com/user-attachments/assets/1fbcabb1-525c-497e-b425-41d6e54b40a7" width ="500">|
 
 
 # 📱 Demonstration
